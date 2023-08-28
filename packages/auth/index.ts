@@ -1,9 +1,9 @@
-import Discord from "@auth/core/providers/discord";
 import type { DefaultSession } from "@auth/core/types";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
 
-import { db, tableCreator } from "@acme/db";
+import { db, tableCreator } from "@lec-workshop/db";
 
 import { env } from "./env.mjs";
 
@@ -28,9 +28,9 @@ export const {
 } = NextAuth({
   adapter: DrizzleAdapter(db, tableCreator),
   providers: [
-    Discord({
-      clientId: env.DISCORD_CLIENT_ID,
-      clientSecret: env.DISCORD_CLIENT_SECRET,
+    GitHubProvider({
+      clientId: env.GITHUB_ID,
+      clientSecret: env.GITHUB_SECRET,
     }),
   ],
   callbacks: {

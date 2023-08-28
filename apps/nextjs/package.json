@@ -1,5 +1,5 @@
 {
-  "name": "@acme/nextjs",
+  "name": "@lec-workshop/nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,9 +13,10 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/auth": "^0.1.0",
-    "@acme/db": "^0.1.0",
+    "@lec-workshop/api": "^0.1.0",
+    "@lec-workshop/auth": "^0.1.0",
+    "@lec-workshop/db": "^0.1.0",
+    "@radix-ui/themes": "^1.1.2",
     "@t3-oss/env-nextjs": "^0.6.1",
     "@tanstack/react-query": "^4.33.0",
     "@tanstack/react-query-devtools": "^4.33.0",
@@ -24,6 +25,7 @@
     "@trpc/next": "^10.38.0",
     "@trpc/react-query": "^10.38.0",
     "@trpc/server": "^10.38.0",
+    "autoprefixer": "^10.4.15",
     "next": "^13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -31,10 +33,10 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@lec-workshop/eslint-config": "^0.2.0",
+    "@lec-workshop/prettier-config": "^0.1.0",
+    "@lec-workshop/tailwind-config": "^0.1.0",
+    "@lec-workshop/tsconfig": "^0.1.0",
     "@types/node": "^18.17.12",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
@@ -47,10 +49,10 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/nextjs",
-      "@acme/eslint-config/react"
+      "@lec-workshop/eslint-config/base",
+      "@lec-workshop/eslint-config/nextjs",
+      "@lec-workshop/eslint-config/react"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@lec-workshop/prettier-config"
 }

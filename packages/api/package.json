@@ -1,5 +1,5 @@
 {
-  "name": "@acme/api",
+  "name": "@lec-workshop/api",
   "version": "0.1.0",
   "private": true,
   "main": "./index.ts",
@@ -12,17 +12,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "^0.1.0",
-    "@acme/db": "^0.1.0",
+    "@lec-workshop/auth": "^0.1.0",
+    "@lec-workshop/db": "^0.1.0",
     "@trpc/client": "^10.38.0",
     "@trpc/server": "^10.38.0",
     "superjson": "1.13.1",
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@lec-workshop/eslint-config": "^0.2.0",
+    "@lec-workshop/prettier-config": "^0.1.0",
+    "@lec-workshop/tsconfig": "^0.1.0",
     "eslint": "^8.48.0",
     "prettier": "^3.0.2",
     "typescript": "^5.2.2"
@@ -30,8 +30,8 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base"
+      "@lec-workshop/eslint-config/base"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@lec-workshop/prettier-config"
 }
