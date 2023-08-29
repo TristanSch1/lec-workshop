@@ -1,20 +1,25 @@
 "use client";
 
-import { useState } from "react";
-
 import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
+import { z } from "zod";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const postSchema = z.object({
+    title: z.string().max(255),
+    content: z.string(),
+});
 
 export function CreatePostForm() {
   const context = api.useContext();
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const { control, handleSubmit } = useForm({
+      resolver: zodResolver(postSchema)
+  });
 
   const { mutateAsync: createPost, error } = api.post.create.useMutation({
     async onSuccess() {
-      setTitle("");
-      setContent("");
       await context.post.all.invalidate();
     },
   });
@@ -22,38 +27,44 @@ export function CreatePostForm() {
   return (
     <form
       className="flex w-full max-w-2xl flex-col"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        try {
+      onSubmit={handleSubmit(async (data) => {
+          const {title, content} = data;
           await createPost({
-            title,
-            content,
+              title,
+              content,
           });
-          setTitle("");
-          setContent("");
           await context.post.all.invalidate();
-        } catch {
-          // noop
-        }
-      }}
+      })}
     >
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      />
+        <Controller
+            control={control}
+            render={({ field }) => {
+            return (
+                <input
+                    className="mb-2 rounded bg-white/10 p-2 text-white"
+                    {...field}
+                    placeholder="Title"
+                />
+            )
+        }} name={"title"} />
       {error?.data?.zodError?.fieldErrors.title && (
         <span className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.title}
         </span>
       )}
-      <input
-        className="mb-2 rounded bg-white/10 p-2 text-white"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Content"
-      />
+        <Controller
+            control={control}
+            render={({ field }) => {
+            return (
+                <>
+                    <input
+                        {...field}
+                        className="mb-2 rounded bg-white/10 p-2 text-white"
+                        placeholder="Content"
+                    />
+                </>
+            )
+        }} name={"content"} />
       {error?.data?.zodError?.fieldErrors.content && (
         <span className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.content}
