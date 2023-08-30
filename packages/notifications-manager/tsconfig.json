@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "test-utils": ["tests/test-utils.ts"]
+    },
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+  }
+}
